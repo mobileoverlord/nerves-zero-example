@@ -9,6 +9,9 @@ defmodule Zero.Mixfile do
   """, :reset])
   def project do
     [app: :zero,
+     name: "Nerves Zero Example",
+     description: "Demo project for the Raspberry Pi Zero",
+     author: "Tim Mecklem",
      version: "0.1.0",
      elixir: "~> 1.4.0",
      target: @target,
@@ -36,7 +39,7 @@ defmodule Zero.Mixfile do
   end
   def application(_target) do
     [mod: {Zero.Application, []},
-     extra_applications: [:logger, :nerves_interim_wifi]]
+     extra_applications: [:logger]]
   end
 
   # Dependencies can be Hex packages:
@@ -56,7 +59,8 @@ defmodule Zero.Mixfile do
   # Specify target specific dependencies
   def deps("host"), do: []
   def deps("rpi0") do
-    [{:nerves_runtime, "~> 0.1.0"},
+    [{:nerves_runtime, path: "../nerves_runtime"},
+     {:bootloader, path: "../bootloader"},
      {:nerves_system_rpi0, "~> 0.13.0", runtime: false},
      {:nerves_interim_wifi, "~> 0.2.0"}]
   end

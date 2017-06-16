@@ -28,6 +28,7 @@ end
 
 release :zero do
   set version: current_version(:zero)
+  plugin Bootloader.Plugin
   if System.get_env("NERVES_SYSTEM") do
     set dev_mode: false
     set include_src: false

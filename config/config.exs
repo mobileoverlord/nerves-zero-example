@@ -16,3 +16,9 @@ config :nerves_interim_wifi,
 
 config :nerves, :firmware,
   rootfs_additions: "rootfs-additions"
+
+# Boot the bootloader first and have it start our app.
+config :bootloader,
+  overlay_path: "/tmp/erl_bootloader",
+  init: [:nerves_runtime],
+  app: :zero
