@@ -11,7 +11,13 @@ use Mix.Config
 
 # import_config "#{Mix.Project.config[:target]}.exs"
 
-config :nerves_interim_wifi,
+config :system_registry, SystemRegistry.Processor.Config,
+  priorities: [
+        :debug,
+        :nerves_network
+    ]
+
+config :nerves_network,
   regulatory_domain: "US"
 
 config :nerves, :firmware,
@@ -20,5 +26,5 @@ config :nerves, :firmware,
 # Boot the bootloader first and have it start our app.
 config :bootloader,
   overlay_path: "/tmp/erl_bootloader",
-  init: [:nerves_runtime],
+  init: [:nerves_init_zero],
   app: :zero

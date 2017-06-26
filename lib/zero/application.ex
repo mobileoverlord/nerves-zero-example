@@ -26,6 +26,6 @@ defmodule Zero.Application do
 
   def init_network() do
     opts = Application.get_env(:hello_wifi, @interface)
-    Nerves.InterimWiFi.setup(@interface, opts)
+    #Nerves.Network.setup(@interface, opts)
   end
 end

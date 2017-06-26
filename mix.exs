@@ -1,7 +1,7 @@
 defmodule Zero.Mixfile do
   use Mix.Project
 
-  @target System.get_env("MIX_TARGET") || "host"
+  @target System.get_env("MIX_TARGET") || "rpi0"
   Mix.shell.info([:green, """
   Env
     MIX_TARGET:   #{@target}
@@ -59,10 +59,11 @@ defmodule Zero.Mixfile do
   # Specify target specific dependencies
   def deps("host"), do: []
   def deps("rpi0") do
-    [{:nerves_runtime, path: "../nerves_runtime"},
-     {:bootloader, path: "../bootloader"},
-     {:nerves_system_rpi0, "~> 0.13.0", runtime: false},
-     {:nerves_interim_wifi, "~> 0.2.0"}]
+    [{:nerves_system_rpi0, "~> 0.13.0", runtime: false},
+     {:nerves_runtime, "~> 0.3"},
+     {:bootloader, "~> 0.1"},
+     {:nerves_init_zero, git: "https://github.com/fhunleth/nerves_init_zero.git", branch: "master"},
+     {:picam, "~> 0.1"}]
   end
 
   def kernel_modules("rpi0"), do: ["brcmfmac"]
