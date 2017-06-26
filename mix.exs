@@ -7,6 +7,7 @@ defmodule Zero.Mixfile do
     MIX_TARGET:   #{@target}
     MIX_ENV:      #{Mix.env}
   """, :reset])
+
   def project do
     [app: :zero,
      name: "Nerves Zero Example",
@@ -15,8 +16,7 @@ defmodule Zero.Mixfile do
      version: "0.1.0",
      elixir: "~> 1.4.0",
      target: @target,
-     archives: [nerves_bootstrap: "~> 0.3.0"],
-     kernel_modules: kernel_modules(@target),
+     archives: [nerves_bootstrap: "~> 0.3"],
      deps_path: "deps/#{@target}",
      build_path: "_build/#{@target}",
      build_embedded: Mix.env == :prod,
@@ -65,8 +65,6 @@ defmodule Zero.Mixfile do
      {:nerves_init_zero, git: "https://github.com/fhunleth/nerves_init_zero.git", branch: "master"},
      {:picam, "~> 0.1"}]
   end
-
-  def kernel_modules("rpi0"), do: ["brcmfmac"]
 
   # We do not invoke the Nerves Env when running on the Host
   def aliases("host"), do: []
