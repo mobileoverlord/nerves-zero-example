@@ -7,7 +7,7 @@ defmodule Zero.Application do
 
     # Define workers and child supervisors to be supervised
     children = [
-      worker(Task, [fn -> init_network() end], restart: :transient, id: Nerves.Init.Network)
+
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
@@ -16,8 +16,4 @@ defmodule Zero.Application do
     Supervisor.start_link(children, opts)
   end
 
-  def init_network() do
-    opts = Application.get_env(:hello_wifi, @interface)
-    #Nerves.Network.setup(@interface, opts)
-  end
 end

@@ -52,7 +52,7 @@ defmodule Zero.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   def deps do
-    [{:nerves, "~> 0.5.1", runtime: false}] ++
+    [{:nerves, "~> 0.6.0", runtime: false}] ++
     deps(@target)
   end
 
@@ -62,7 +62,7 @@ defmodule Zero.Mixfile do
     [{:nerves_system_rpi0, "~> 0.13.0", runtime: false},
      {:nerves_runtime, "~> 0.3"},
      {:bootloader, "~> 0.1"},
-     {:nerves_init_zero, git: "https://github.com/fhunleth/nerves_init_zero.git", branch: "master"},
+     {:nerves_init_zero, github: "fhunleth/nerves_init_zero", branch: "master"},
      {:picam, "~> 0.1"}]
   end
 
